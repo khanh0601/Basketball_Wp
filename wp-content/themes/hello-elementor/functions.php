@@ -252,14 +252,34 @@ if ( ! function_exists( 'hello_elementor_check_hide_title' ) ) {
 	}
 }
 add_filter( 'hello_elementor_page_title', 'hello_elementor_check_hide_title' );
-
-/**
- * BC:
- * In v2.7.0 the theme removed the `hello_elementor_body_open()` from `header.php` replacing it with `wp_body_open()`.
- * The following code prevents fatal errors in child themes that still use this function.
- */
 if ( ! function_exists( 'hello_elementor_body_open' ) ) {
 	function hello_elementor_body_open() {
 		wp_body_open();
 	}
 }
+function jamfam_add_js() {
+	wp_enqueue_script( 'jquery2', 'https://code.jquery.com/jquery-3.7.1.min.js', array(), '1.0', true );
+	wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '1.0', true );
+	wp_enqueue_script( 'gsap', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', array(), '1.0', true );
+	wp_enqueue_script( 'scrollTrigger', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', array('gsap'), '1.0', true );
+	wp_enqueue_script( 'lenis', 'https://unpkg.com/lenis@1.1.5/dist/lenis.min.js', array(), '1.0', true );
+	wp_enqueue_script( 'threejs', 'https://cdn.jsdelivr.net/npm/three@0.127.0/build/three.min.js', array(), '1.0', true );
+	wp_enqueue_script( 'threedat', 'https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.min.js', array(), '1.0', true );
+	wp_enqueue_script( 'split-type', 'https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js', array(), '1.0', true );
+	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array('jquery2', 'gsap', 'scrollTrigger', 'lenis', 'threejs', 'threedat', 'split-type'), '1.1', true );
+
+}
+add_action( 'wp_enqueue_scripts', 'jamfam_add_js' );
+
+function jamfam_add_css() {
+	wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '1.0', 'all' );
+	wp_enqueue_style( 'global-css', get_template_directory_uri() . '/assets/css/styles.css', array(), '1.0', 'all' );
+	wp_enqueue_style( 'homepage', get_template_directory_uri() . '/assets/css/homepage.css', array('global-css',  'swiper-css'), '1.0', 'all' );
+	}
+	add_action( 'wp_enqueue_scripts', 'jamfam_add_css' );
+	
+	function allow_webp_uploads($mimes) {
+    $mimes['webp'] = 'image/webp';
+    return $mimes;
+}
+add_filter('upload_mimes', 'allow_webp_uploads');

@@ -16,13 +16,21 @@ $footer_nav_menu = wp_nav_menu( [
 	'echo' => false,
 ] );
 ?>
-<footer id="site-footer" class="site-footer">
-	<?php if ( $footer_nav_menu ) : ?>
+<footer >
+	<!-- <?php if ( $footer_nav_menu ) : ?>
 		<nav class="site-navigation" aria-label="<?php echo esc_attr__( 'Footer menu', 'hello-elementor' ); ?>">
 			<?php
 			// PHPCS - escaped by WordPress with "wp_nav_menu"
 			echo $footer_nav_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			?>
 		</nav>
-	<?php endif; ?>
+	<?php endif; ?> -->
+	<div class="footer-wrap">
+		<section class="footer">
+			<div class="container">
+				<h2 class="heading h2 footer-title txt-whites">Footer</h2>
+			</div>
+		</section>
+	</div>
+
 </footer>
