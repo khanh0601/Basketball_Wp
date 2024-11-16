@@ -28,7 +28,7 @@ $footer_nav_menu = wp_nav_menu( [
 	<div class="footer-wrap">
 		<section class="footer">
 			<div class="container">
-				<h2 class="heading h2 footer-title txt-whites">Footer</h2>
+				<h2 class="heading h2 footer-title txt-white">Footer</h2>
 			</div>
 		</section>
 	</div>

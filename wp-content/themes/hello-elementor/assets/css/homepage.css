@@ -55,7 +55,7 @@
     transform: scaleX(0);
     transform-origin: right;
 }
-.home-intro-item:hover .home-line{
+.home-intro-item:hover .home-line,.home-intro-item.active .home-line{
   transform: scaleX(1);
   transform-origin: left;
 }
@@ -184,6 +184,9 @@ column-gap: 4rem;
 .home-price-title-wrap{
   max-width: 78rem;
   margin-bottom: 8rem
+}
+.home-price-inner.swiper{
+  overflow: visible !important;
 }
 .home-price{
   padding: 12rem 0;

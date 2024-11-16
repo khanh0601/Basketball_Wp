@@ -186,6 +186,26 @@ lenis.on("scroll", function (inst) {
     
     }
     homeBasket3d()
+    function homeIntro(){
+      let tlTrigger = new gsap.timeline({
+        scrollTrigger: {
+          trigger: '.home-intro',
+          start: 'top bottom+=50%',
+          end: 'bottom top',
+          once: true,
+          onEnter: () => {
+            setup();
+          },
+        }
+      })
+      function setup(){
+       $('.home-intro-item').on('mouseenter', function(){
+        $('.home-intro-item').removeClass('active');
+        $(this).addClass('active');
+       })
+      }
+    }
+    homeIntro();
     function homeRoom(){
       let tlTrigger = new gsap.timeline({
         scrollTrigger: {
